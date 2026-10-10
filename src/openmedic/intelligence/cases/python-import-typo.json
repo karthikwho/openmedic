@@ -1,0 +1,13 @@
+{
+  "case_id": "python-import-typo",
+  "expected_failure_type": "syntax_or_import_error",
+  "expected_rule_id": "SYN-001",
+  "min_confidence": 0.5,
+  "tags": [
+    "python",
+    "import",
+    "p0"
+  ],
+  "note": "ImportError on a name that does not exist in the target module; the interpreter suggests the near-miss spelling. A code-level defect in project source, not a missing package. The imported module resolves inside the project (CPython prints its path only when the module was found, and that path is not site-packages), so a wrong symbol is a source defect rather than a dependency to install.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run python -m openmedic\n  python -m openmedic\n  shell: /usr/bin/bash -e {0}\nTraceback (most recent call last):\n  File \"/home/runner/work/app/app/src/openmedic/cli/app.py\", line 12, in <module>\n    from openmedic.engine import run\n  File \"/home/runner/work/app/app/src/openmedic/engine.py\", line 2, in <module>\n    from openmedic.parsers import parse_config\nImportError: cannot import name 'parse_config' from 'openmedic.parsers' (/home/runner/work/app/app/src/openmedic/parsers.py). Did you mean: 'parse_configs'?\n##[error]Process completed with exit code 1.\n"
+}

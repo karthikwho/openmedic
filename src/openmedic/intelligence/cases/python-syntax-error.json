@@ -1,0 +1,13 @@
+{
+  "case_id": "python-syntax-error",
+  "expected_failure_type": "syntax_or_import_error",
+  "expected_rule_id": "SYN-001",
+  "min_confidence": 0.5,
+  "tags": [
+    "python",
+    "syntax",
+    "p0"
+  ],
+  "note": "Missing colon in a function signature. A code-level defect with no dependency involvement at all.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run python -m compileall -q src\n  python -m compileall -q src\n  shell: /usr/bin/bash -e {0}\n  File \"/home/runner/work/app/app/src/app/views.py\", line 27\n    def render(context, strict)\n                              ^\nSyntaxError: expected ':'\n##[error]Process completed with exit code 1.\n"
+}

@@ -1,0 +1,7 @@
+##[group]Run make release VERSION=1.4.0
+make: Entering directory '/home/runner/work/openmedic/openmedic'
+make[1]: Entering directory '/home/runner/work/openmedic/openmedic/docs'
+make[1]: *** No rule to make target 'release'. Stop.
+make[1]: *** [Makefile:27: release] Error 2
+make: *** [release] Error 2
+Error: Process completed with exit code 1.

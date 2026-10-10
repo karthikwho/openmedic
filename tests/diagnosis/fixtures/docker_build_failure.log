@@ -1,0 +1,22 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 412B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 DONE 0.4s
+
+#4 [2/5] RUN apk add --no-cache gcc musl-dev
+#4 0.412 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/main/x86_64/APKINDEX.tar.gz
+#4 0.812 ERROR: unable to select packages:
+#4 0.812   gcc (no such package):
+#4 0.812     required by: world[gcc]
+#4 DONE 0.9s
+
+#5 ERROR: executor failed running [/bin/sh -c apk add --no-cache gcc musl-dev]: exit code: 1
+------
+ > [2/5] RUN apk add --no-cache gcc musl-dev:
+------
+ERROR [2/5] RUN apk add --no-cache gcc musl-dev did not complete successfully: exit code: 1
+ERROR: failed to solve: process "/bin/sh -c apk add --no-cache gcc musl-dev" did not complete successfully: exit code: 1

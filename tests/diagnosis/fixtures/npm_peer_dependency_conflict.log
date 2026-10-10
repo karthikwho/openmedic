@@ -1,0 +1,19 @@
+Run actions/checkout@v4
+$ npm ci
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+npm ERR!
+npm ERR! While resolving: [email protected]
+npm ERR! Found: [email protected]
+npm ERR! node_modules/react
+npm ERR!   react@"18.2.0" from the root project
+npm ERR!
+npm ERR! Could not resolve dependency:
+npm ERR! peer react@"^17.0.0" from [email protected]
+npm ERR! node_modules/react-dom-17
+npm ERR!   react-dom@"^17.0.0" from the root project
+npm ERR!
+npm ERR! Fix the upstream dependency conflict, or retry this command with --force, or --legacy-peer-deps.
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/runner/.npm/_logs/2026-01-01T00_00_00_000Z-debug.log
+Error: Process completed with exit code 1.

@@ -1,0 +1,8 @@
+Run actions/checkout@v4
+Run actions/setup-python@v5
+$ python -m pytest -q
+Traceback (most recent call last):
+  File "/home/runner/work/app/app/src/service.py", line 12, in <module>
+    from app import create_app
+ImportError: cannot import name 'create_app' from 'app' (/home/runner/work/app/app/src/app/__init__.py)
+Error: Process completed with exit code 1.

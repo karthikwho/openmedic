@@ -1,0 +1,30 @@
+Run actions/checkout@v4
+$ npm run build
+
+> [email protected] build /home/runner/work/app/app
+> tsc --noEmit && webpack --mode production
+
+asset bundle.js 64.2 KiB [emitted] (name: main)
+runtime modules 1.13 KiB 4 modules
+modules by path ./src/*.ts 6.71 KiB
+  ./src/index.ts 1.42 KiB [built] [code generated]
+  ./src/api/client.ts 5.29 KiB [built] [code generated]
+
+ERROR in ./src/api/client.ts:42:15
+TS2322: Type 'string' is not assignable to type 'number'.
+
+42 |   return String(payload.count);
+  |          ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+webpack 5.94.0 compiled with 1 error in 2843 ms
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! [email protected] build: `tsc --noEmit && webpack --mode production`
+npm ERR! Exit status 1
+npm ERR! failed at the [email protected] build script.
+npm ERR! this is probably not a problem with npm.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     tsc --noEmit && webpack --mode production
+npm ERR! You can get info on that by running "npm ERR! npm owner ls [email protected]".
+npm ERR! There is likely additional logging output above.
+Error: Process completed with exit code 1.

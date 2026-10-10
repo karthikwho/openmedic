@@ -1,0 +1,17 @@
+Run actions/checkout@v4
+$ python -m pytest -q
+============================= test session starts ==============================
+platform linux -- Python 3.12.4, pytest-8.2.2, pluggy-1.5.0
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_________________ ERROR collecting tests/test_billing.py ______________________
+ImportError while importing test module '/home/runner/work/app/app/tests/test_billing.py'.
+Hint: make sure your test modules/packages have valid Python names.
+tests/test_billing.py:2: in <module>
+    from tests.helpers import factories
+E   ModuleNotFoundError: No module named 'tests.helpers.factories'
+=========================== short test summary info ============================
+ERROR tests/test_billing.py - ModuleNotFoundError: No module named 'tests.helpers.factories'
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+Error: Process completed with exit code 1.

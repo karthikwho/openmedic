@@ -1,0 +1,13 @@
+{
+  "case_id": "clean-passing-run",
+  "expected_failure_type": "unknown",
+  "expected_rule_id": null,
+  "min_confidence": 0.0,
+  "tags": [
+    "negative",
+    "clean",
+    "p0"
+  ],
+  "note": "Negative control. The whole job succeeded and reports nothing but successes. An engine that reports any failure class here is inventing a cause: unknown is the only honest answer for a log with no failure signature.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run python -m pytest tests/ -q\n  python -m pytest tests/ -q\n  shell: /usr/bin/bash -e {0}\n============================= test session starts ==============================\nplatform linux -- Python 3.12.4, pytest-8.2.2, pluggy-1.5.0\ncollected 12 items\n\ntests/test_billing.py ............                                         [100%]\n\n============================== 12 passed in 4.11s ==============================\n##[group]Run ruff check src tests\n  ruff check src tests\n  shell: /usr/bin/bash -e {0}\nAll checks passed!\n##[group]Run uv build\n  uv build\n  shell: /usr/bin/bash -e {0}\n* Building wheel...\nSuccessfully built dist/openmedic-0.1.0-py3-none-any.whl\n##[notice]Job succeeded.\n"
+}

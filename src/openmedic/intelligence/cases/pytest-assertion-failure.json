@@ -1,0 +1,13 @@
+{
+  "case_id": "pytest-assertion-failure",
+  "expected_failure_type": "test_failure",
+  "expected_rule_id": "TEST-001",
+  "min_confidence": 0.5,
+  "tags": [
+    "pytest",
+    "test",
+    "p0"
+  ],
+  "note": "A single assertion failure inside a passing suite. Classified as a test failure because the suite ran and a named test asserted something untrue.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run python -m pytest tests/test_billing.py -q\n  python -m pytest tests/test_billing.py -q\n  shell: /usr/bin/bash -e {0}\n============================= test session starts ==============================\nplatform linux -- Python 3.12.4, pytest-8.2.2, pluggy-1.5.0\ncollected 4 items\n\ntests/test_billing.py ....F                                               [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_prorated_refund ___________________________\ntests/test_billing.py:58: in test_prorated_refund\n    assert refund_total == pytest.approx(42.50)\nE   AssertionError: assert 39.99 == 42.5 within 0.01\nE     +39.99  -42.5\n=========================== short test summary info ============================\nFAILED tests/test_billing.py::test_prorated_refund - AssertionError: assert 39.99 == 42.5\n========================= 1 failed, 3 passed in 1.83s =========================\n##[error]Process completed with exit code 1.\n"
+}

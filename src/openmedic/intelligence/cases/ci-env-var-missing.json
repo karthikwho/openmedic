@@ -1,0 +1,13 @@
+{
+  "case_id": "ci-env-var-missing",
+  "expected_failure_type": "build_or_config_error",
+  "expected_rule_id": "BUILD-001",
+  "min_confidence": 0.5,
+  "tags": [
+    "ci",
+    "config",
+    "p0"
+  ],
+  "note": "The pipeline aborts before doing any work because a required environment variable was never provided to the job. A workflow configuration error, not a defect in the code.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run ./scripts/deploy.sh --target\n  ./scripts/deploy.sh --target\n  shell: /usr/bin/bash -e {0}\n> OpenMedic deploy helper\n> resolving target environment...\ndeploy: error: required environment variable DEPLOY_TARGET is not set\ndeploy: available contexts: staging, production\nhint: add the variable to the job env block in .github/workflows/deploy.yml\n##[error]Process completed with exit code 1.\n"
+}

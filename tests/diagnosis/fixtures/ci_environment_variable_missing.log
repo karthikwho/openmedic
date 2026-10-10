@@ -1,0 +1,10 @@
+Current runner version: '2.320.0'
+##[group]Run ./scripts/publish.sh
+  ./scripts/publish.sh
+  shell: /usr/bin/bash -e {0}
+> publish helper
+> resolving channel...
+publish: error: required environment variable RELEASE_CHANNEL is not set
+publish: available channels: nightly, stable
+hint: add the variable to the job env block in .github/workflows/publish.yml
+##[error]Process completed with exit code 1.

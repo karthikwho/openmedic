@@ -1,0 +1,13 @@
+{
+  "case_id": "pytest-collection-error",
+  "expected_failure_type": "test_failure",
+  "expected_rule_id": "TEST-001",
+  "min_confidence": 0.5,
+  "tags": [
+    "pytest",
+    "test",
+    "p0"
+  ],
+  "note": "The suite never ran: both modules failed to import during collection. Classified as a test failure because the test framework is what broke, even though the underlying traceback mentions a missing module. Precedence is part of the label: a collection error is the outer, more specific signature. Precedence is decided by evidence, not by the presence of pytest alone: the missing module is the suite's own top-level package ('tests'), so the suite did not collect because project code does not resolve. A missing third-party package at collection time stays a dependency error, because there the repair is an install.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run python -m pytest -q\n  python -m pytest -q\n  shell: /usr/bin/bash -e {0}\n============================= test session starts ==============================\nplatform linux -- Python 3.12.4, pytest-8.2.2, pluggy-1.5.0\ncollected 0 items / 2 errors\n\n==================================== ERRORS ====================================\nERROR collecting tests/test_smoke.py\nImportError while importing test module '/home/runner/work/app/app/tests/test_smoke.py'.\nHint: make sure your test modules/packages have valid Python names.\ntests/test_smoke.py:4: in <module>\n    from tests.helpers import fixtures\nE   ModuleNotFoundError: No module named 'tests.helpers.fixtures'\nERROR collecting tests/test_regression.py\nImportError while importing test module '/home/runner/work/app/app/tests/test_regression.py'.\n!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!\n##[error]Process completed with exit code 1.\n"
+}

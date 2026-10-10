@@ -1,0 +1,14 @@
+{
+  "case_id": "jest-snapshot-mismatch",
+  "expected_failure_type": "test_failure",
+  "expected_rule_id": "TEST-001",
+  "min_confidence": 0.5,
+  "tags": [
+    "jest",
+    "test",
+    "javascript",
+    "p1"
+  ],
+  "note": "A JS test-suite failure with the same shape as the pytest assertion case. Confirms the benchmark is not Python-specific and the failure taxonomy crosses tooling.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run npx jest --ci --runInBand\n  npx jest --ci --runInBand\n  shell: /usr/bin/bash -e {0}\nPASS  src/utils/format.spec.js\nFAIL  src/checkout/cart.spec.js\n  \u25cf Checkout cart \u203a applies the promotional discount\n\n    expect(received).toEqual(expected) // deep equality\n\n    - Expected\n    + Received\n\n      Object {\n    -   \"total\": 42.5,\n    +   \"total\": 39.99,\n      }\n\n      at Object.<anonymous> (src/checkout/cart.spec.js:118:24)\n\nTest Suites: 1 failed, 1 passed, 2 total\nTests:       1 failed, 1 passed, 2 total\nSnapshots:   0 total\nTime:        3.412 s\n##[error]Process completed with exit code 1.\n"
+}

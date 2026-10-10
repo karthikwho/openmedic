@@ -1,0 +1,11 @@
+Current runner version: '2.320.0'
+##[group]Validate workflow definition
+  action.yml validation
+Invalid workflow file: '.github/workflows/release.yml'
+yaml: line 27: mapping values are not allowed in this context
+   25 |     steps:
+   26 |       - uses: actions/checkout@v4
+   27 |       - name: tag name: unstable
+                 ^
+hint: quote the value or split the key
+##[error]Process completed with exit code 1.

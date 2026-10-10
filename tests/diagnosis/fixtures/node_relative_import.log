@@ -1,0 +1,13 @@
+Run actions/checkout@v4
+$ node src/index.js
+node:internal/modules/cjs/loader:1153
+  throw err;
+  ^
+
+Error: Cannot find module './config/uploader'
+Require stack:
+- /home/runner/work/app/app/src/index.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1150:15)
+    at Function._load (node:internal/modules/cjs/loader:1006:27)
+    at Function.executeUserEntryPoint (as the main module) (node:internal/modules/cjs/loader:1299:12)
+Error: Process completed with exit code 1.

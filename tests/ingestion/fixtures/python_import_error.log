@@ -1,0 +1,7 @@
+##[group]Run python -c "import openmedic.cli.app"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/runner/work/openmedic/openmedic/src/openmedic/cli/app.py", line 14, in <module>
+    from openmedic.persistence.store import IncidentStore
+ImportError: cannot import name 'IncidentStore' from 'openmedic.persistence.store' (/home/runner/work/openmedic/openmedic/src/openmedic/persistence/store.py)
+Error: Process completed with exit code 1.

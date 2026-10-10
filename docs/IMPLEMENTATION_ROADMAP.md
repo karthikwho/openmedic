@@ -119,7 +119,10 @@ This roadmap is ordered by dependency, not by presentation polish. OpenCode shou
 - Complete README, quick start, provider setup, GitHub setup, security notes, limitations, troubleshooting, architecture docs.
 - Run full test/lint/type checks, package build, install-from-built-package smoke test.
 - Validate benchmark results and publish only measured metrics.
-- Add license and contribution guidelines after confirming the intended license with project owners.
+- ~~Add license and contribution guidelines after confirming the intended license with project owners.~~
+  **Superseded:** the owner has chosen **MIT** and the root `LICENSE` file exists
+  (tracked in `docs/IMPLEMENTATION_STATUS.md` §11.12). Only contribution guidelines
+  remain to be added.
 
 **Exit gate:** clean checkout install works; tests and benchmark results are recorded; known limitations are explicit.
 

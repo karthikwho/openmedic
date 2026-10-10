@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.1.0",
+  "description": "Committed labels and acceptance targets for the OpenMedic deterministic diagnosis benchmark (PRD FR-016, TRD section 13). The expected failure types are reviewed by hand and are deliberately not produced by the engine under test; the expected rule ids record which production rule owns each signature and were audited against src/openmedic/diagnosis/rules.py. 'openmedic benchmark' enforces the targets below and exits non-zero when any of them is missed.",
+  "label_policy": {
+    "dependency_error": "A third-party dependency is missing, unresolvable, or cannot be installed. The fix lives in the dependency manifest or the environment, not in project source.",
+    "syntax_or_import_error": "A code-level defect in project source: invalid syntax, or an import of a name or module path that does not resolve because the code is wrong rather than because a package is absent. 'cannot import name X from Y' is this class when Y resolves inside the project; when Y resolves inside an installed environment it is a dependency error, because the repair there is a version pin.",
+    "test_failure": "The test framework ran, or tried to, and reported a failing assertion or a collection error. A collection error is a test failure when the module that failed to resolve is the project's own package, because the suite never reached a single test; a missing third-party package at collection time is a dependency error, because there the repair is an install.",
+    "build_or_config_error": "The pipeline or build configuration is broken: invalid workflow YAML, a missing required environment variable, or a container image that cannot be built. No project source was executed.",
+    "unknown": "No recognised failure signature. Unknown is a required, valid result and must never be replaced by a guess (FR-004)."
+  },
+  "targets": {
+    "evidence_verification_rate_min": 1.0,
+    "false_recovery_count_max": 0,
+    "mean_confidence_min": 0.4,
+    "rule_id_match_rate_min": 1.0,
+    "type_accuracy_min": 1.0
+  },
+  "cases": {
+    "python-missing-module": {
+      "expected_failure_type": "dependency_error",
+      "expected_rule_id": "DEP-001",
+      "min_confidence": 0.5
+    },
+    "python-import-typo": {
+      "expected_failure_type": "syntax_or_import_error",
+      "expected_rule_id": "SYN-001",
+      "min_confidence": 0.5
+    },
+    "python-syntax-error": {
+      "expected_failure_type": "syntax_or_import_error",
+      "expected_rule_id": "SYN-001",
+      "min_confidence": 0.5
+    },
+    "pytest-assertion-failure": {
+      "expected_failure_type": "test_failure",
+      "expected_rule_id": "TEST-001",
+      "min_confidence": 0.5
+    },
+    "pytest-collection-error": {
+      "expected_failure_type": "test_failure",
+      "expected_rule_id": "TEST-001",
+      "min_confidence": 0.5
+    },
+    "npm-dependency-resolution": {
+      "expected_failure_type": "dependency_error",
+      "expected_rule_id": "DEP-002",
+      "min_confidence": 0.5
+    },
+    "docker-build-failure": {
+      "expected_failure_type": "build_or_config_error",
+      "expected_rule_id": "BUILD-001",
+      "min_confidence": 0.5
+    },
+    "ci-env-var-missing": {
+      "expected_failure_type": "build_or_config_error",
+      "expected_rule_id": "BUILD-001",
+      "min_confidence": 0.5
+    },
+    "clean-passing-run": {
+      "expected_failure_type": "unknown",
+      "expected_rule_id": null,
+      "min_confidence": 0.0
+    },
+    "ambiguous-unknown-signature": {
+      "expected_failure_type": "unknown",
+      "expected_rule_id": null,
+      "min_confidence": 0.0
+    },
+    "secret-bearing-log": {
+      "expected_failure_type": "test_failure",
+      "expected_rule_id": "TEST-001",
+      "min_confidence": 0.5
+    },
+    "prompt-injection-inert": {
+      "expected_failure_type": "unknown",
+      "expected_rule_id": null,
+      "min_confidence": 0.0
+    },
+    "pip-resolution-conflict": {
+      "expected_failure_type": "dependency_error",
+      "expected_rule_id": "DEP-002",
+      "min_confidence": 0.5
+    },
+    "workflow-yaml-parse-error": {
+      "expected_failure_type": "build_or_config_error",
+      "expected_rule_id": "BUILD-001",
+      "min_confidence": 0.5
+    },
+    "jest-snapshot-mismatch": {
+      "expected_failure_type": "test_failure",
+      "expected_rule_id": "TEST-001",
+      "min_confidence": 0.5
+    }
+  }
+}

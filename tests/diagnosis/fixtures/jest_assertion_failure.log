@@ -1,0 +1,25 @@
+$ npx jest tests
+PASS tests/strings.test.js
+  ✓ uppercases a word (3 ms)
+FAIL tests/math.test.js
+  ✓ adds numbers (4 ms)
+  ✕ multiplies numbers (2 ms)
+  1. multiplies numbers
+
+  ● math › multiplies numbers
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 42
+    Received: 21
+
+      8 |
+    >  9 |   expect(multiply(2, 21)).toBe(42);
+         |                          ^
+     10 | });
+
+      at Object.<anonymous> (tests/math.test.js:9:26)
+
+Tests:       1 failed, 1 passed, 2 total
+Test Suites: 1 failed, 1 passed, 2 total
+Error: Process completed with exit code 1.

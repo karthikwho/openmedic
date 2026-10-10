@@ -1,0 +1,15 @@
+$ pip install --requirement requirements.txt
+Collecting requests==2.31.0
+INFO: pip is looking at multiple versions of requests to determine which version is compatible with other requirements.
+Installing collected packages: requests
+ERROR: Cannot install requests==2.30.0 and requests==2.31.0 because these package versions have conflicting dependencies.
+
+The conflict is caused by:
+    The user requested requests==2.30.0
+    requests 2.31.0 depends on urllib3>=1.21.1,<1.27
+    The user requested (constraint) urllib3==1.26.0
+
+pip's dependency resolver does not currently take into account all the packages that are installed.
+This can sometimes result in dependency conflicts that are not resolvable for a fresh install.
+Please try running pip install with fewer or less restrictive pins.
+Error: Process completed with exit code 1.

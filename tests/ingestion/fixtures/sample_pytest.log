@@ -1,0 +1,31 @@
+##[job]test-suite (ubuntu-latest)
+##[group]Run pytest -q
+============================= test session starts ==============================
+platform linux -- Python 3.12.7, pytest-8.3.3, pluggy-1.5.0
+rootdir: /home/runner/work/openmedic/openmedic
+configfile: pyproject.toml
+plugins: cov-5.0.0
+collected 24 items
+
+tests/unit/test_redaction.py ....                                       [ 16%]
+tests/unit/test_contracts.py .....F                                     [ 33%]
+tests/unit/test_ingestion.py ......                                     [ 50%]
+tests/integration/test_pipeline.py ...                                  [ 66%]
+tests/safety/test_prompt_injection.py ..                                [ 75%]
+tests/unit/test_lifecycle.py ....                                       [ 83%]
+tests/unit/test_reporting.py ...                                        [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_redaction_keeps_raw_log_evidence _______________________
+
+    def test_redaction_keeps_raw_log_evidence():
+        event = ingest_log_text(raw_log, repository="acme/openmedic")
+>       assert event.logs == raw_log
+E       AssertionError: assert 'credentials rejected for user pipeline' == 'credentials rejected for user pipeline (see docs/SECURITY.md)'
+
+tests/unit/test_redaction.py:118: AssertionError
+==================== tests/unit/test_redaction.py::test_redaction_keeps_raw_log_evidence ====================
+=========================== short test summary info ============================
+FAILED tests/unit/test_redaction.py::test_redaction_keeps_raw_log_evidence - AssertionError
+========================= 1 failed, 23 passed, 1 warning in 0.37s =========================
+Error: Process completed with exit code 1.

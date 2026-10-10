@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "incident_id": null,
+  "repository": "acme/openmedic",
+  "commit_sha": "9f2c1ab4d5e6f7089a0b1c2d3e4f5061728394a5",
+  "workflow_name": "ci",
+  "run_id": "182736451",
+  "failed_step": "Run pytest -q tests/test_lifecycle.py",
+  "job_name": "test-suite (ubuntu-latest)",
+  "failure_type": "test_failure",
+  "logs": "##[group]Run pytest -q tests/test_lifecycle.py\nFAILED tests/test_lifecycle.py::test_retry_appends_attempt - AssertionError\nAssertionError: assert 1 == 2\nError: Process completed with exit code 1.",
+  "timestamp": "2026-10-05T09:14:22Z"
+}

@@ -1,0 +1,13 @@
+{
+  "case_id": "python-missing-module",
+  "expected_failure_type": "dependency_error",
+  "expected_rule_id": "DEP-001",
+  "min_confidence": 0.5,
+  "tags": [
+    "python",
+    "dependency",
+    "p0"
+  ],
+  "note": "Third-party package is absent from the job environment. Classified as a dependency problem, not a code defect: the import statement itself is valid.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run python -m pytest tests/ -q\n  python -m pytest tests/ -q\n  shell: /usr/bin/bash -e {0}\n============================= test session starts ==============================\nplatform linux -- Python 3.12.4, pytest-8.2.2, pluggy-1.5.0\ncachedir: .pytest_cache\nrootdir: /home/runner/work/app/app\ncollected 0 items / 1 error\n\n=================================== ERRORS ====================================\n_______________ ERROR collecting tests/test_api.py ________________\ntests/test_api.py:3: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n=========================== short test summary info ============================\nERROR tests/test_api.py\n=============================== 1 error in 0.42s ===============================\n##[error]Process completed with exit code 1.\n"
+}

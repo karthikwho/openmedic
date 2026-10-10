@@ -1,0 +1,14 @@
+{
+  "case_id": "workflow-yaml-parse-error",
+  "expected_failure_type": "build_or_config_error",
+  "expected_rule_id": "BUILD-001",
+  "min_confidence": 0.5,
+  "tags": [
+    "ci",
+    "config",
+    "yaml",
+    "p1"
+  ],
+  "note": "The pipeline configuration itself is invalid YAML, so no job ever ran. Configuration error: nothing in the repository's code has been executed.",
+  "log": "Current runner version: '2.320.0'\n##[group]Validate workflow definition\n  action.yml validation\nInvalid workflow file: '.github/workflows/ci.yml'\nyaml: line 41: mapping values are not allowed in this context\n  39 |     - name: Run tests\n  40 |       run: pytest -q\n  41 |     - name: Upload coverage if: always\n                ^\nhint: quote or re-indent the step name\n##[error]Process completed with exit code 1.\n"
+}

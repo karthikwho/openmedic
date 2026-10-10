@@ -1,0 +1,14 @@
+$ python -m pytest tests -q
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.3.2, pluggy-1.5.0
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_____________________ ERROR collecting tests/test_api.py ______________________
+tests/test_api.py:2: in <module>
+    import requests
+E   ModuleNotFoundError: No module named 'requests'
+=========================== short test summary info ============================
+ERROR tests/test_api.py - ModuleNotFoundError: No module named 'requests'
+============================ 1 error in 0.11s ============================
+Error: Process completed with exit code 1.

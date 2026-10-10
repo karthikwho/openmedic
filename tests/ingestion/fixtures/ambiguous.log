@@ -1,0 +1,11 @@
+##[job]nightly-audit (ubuntu-latest)
+##[group]Run ./scripts/smoke.sh --target staging
++ ./scripts/smoke.sh --target staging
+Probing service endpoints for 30s...
+endpoint /health returned 200
+endpoint /ready returned 200
+endpoint /metrics returned 200
+Collected 12 artifacts from the staging bucket (1.4 MiB)
+Wrote report to build/reports/smoke-summary.txt
+Nothing in this run matched a known failure signature.
+Error: Process completed with exit code 1.

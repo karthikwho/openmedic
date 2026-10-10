@@ -1,0 +1,134 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Only versions executed in CI are listed here. Do not add a version that
+        # has not actually been run — docs/IMPLEMENTATION_STATUS.md tracks results.
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Install project (dev extras)
+        run: uv sync --extra dev
+
+      - name: Lint (ruff)
+        run: uv run ruff check .
+
+      - name: Format check (ruff)
+        run: uv run ruff format --check .
+
+      - name: Tests (offline suite)
+        run: uv run pytest -q
+        env:
+          # Guarantee no provider or GitHub credentials leak into CI.
+          OPENMEDIC_PROVIDER_TYPE: none
+          OPENMEDIC_GITHUB_TOKEN: ""
+          OPENMEDIC_DB: ${{ runner.temp }}/openmedic-ci.db
+
+  benchmark:
+    # The benchmark gate. This is the same engine, corpus and targets the documented
+    # `openmedic benchmark` command uses, so a regression fails the workflow instead of
+    # being a number nobody acts on.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Install project
+        run: uv sync --extra dev
+      - name: Benchmark against the committed targets
+        run: uv run openmedic benchmark
+        env:
+          OPENMEDIC_DB: ${{ runner.temp }}/openmedic-benchmark.db
+
+  api-optional:
+    # The API is an optional dependency group. This job proves that installing it does
+    # not destabilise the CLI-only path.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Install with api extra
+        run: uv sync --extra dev --extra api
+      - name: CLI still works without importing FastAPI
+        run: |
+          uv run python -c "
+          import sys, openmedic.cli.app
+          assert 'fastapi' not in sys.modules, 'CLI import must not pull in FastAPI'
+          print('OK: CLI-only import path is clean')
+          "
+      - name: API imports and responds
+        run: |
+          uv run python -c "
+          from openmedic.api import create_app
+          app = create_app()
+          assert app is not None
+          print('OK: API app builds')
+          "
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Build wheel and sdist
+        run: uv build
+      - name: Install the built wheel into a clean venv and run --version
+        run: |
+          WHEEL=$(ls dist/*.whl)
+          python -m venv /tmp/clean-venv
+          /tmp/clean-venv/bin/pip install --quiet "$WHEEL"
+          /tmp/clean-venv/bin/openmedic --version
+          /tmp/clean-venv/bin/openmedic --help > /dev/null
+          echo "OK: installed clean-room smoke test passed"
+      - name: Installed CLI runs the packaged benchmark from outside the checkout
+        # The corpus is package data, so this must work with no source tree present.
+        run: |
+          WHEEL=$(ls dist/*.whl)
+          python -m venv /tmp/bench-venv
+          /tmp/bench-venv/bin/pip install --quiet "$WHEEL"
+          cd "$RUNNER_TEMP"
+          /tmp/bench-venv/bin/openmedic benchmark
+          echo "OK: packaged corpus met its targets outside the checkout"
+
+  safety-gate:
+    # Safety invariants must never be weakened. This job runs only the safety tests so
+    # a regression is unmistakable.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Install project
+        run: uv sync --extra dev
+      - name: Safety and invariant tests
+        run: uv run pytest tests/safety -q
+        env:
+          OPENMEDIC_DB: ${{ runner.temp }}/openmedic-safety.db

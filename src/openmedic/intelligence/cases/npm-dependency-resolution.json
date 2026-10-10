@@ -1,0 +1,13 @@
+{
+  "case_id": "npm-dependency-resolution",
+  "expected_failure_type": "dependency_error",
+  "expected_rule_id": "DEP-002",
+  "min_confidence": 0.5,
+  "tags": [
+    "npm",
+    "dependency",
+    "p0"
+  ],
+  "note": "The resolver cannot satisfy the declared peer ranges. No package was installed, so nothing downstream could run.",
+  "log": "Current runner version: '2.320.0'\n##[group]Run npm ci\n  npm ci\n  shell: /usr/bin/bash -e {0}\nnpm error code ERESOLVE\nnpm error ERESOLVE could not resolve\nnpm error\nnpm error While resolving: acme-ui@3.4.1\nnpm error Found: react@18.3.1\nnpm error node_modules/react\nnpm error   react@\"18.3.1\" from the root project\nnpm error\nnpm error Could not resolve dependency:\nnpm error peer react@\"^19.0.0\" from @acme/charts@5.0.0\nnpm error node_modules/@acme/charts\nnpm error   @acme/charts@\"5.0.0\" from the root project\nnpm error\nnpm error Conflicting peer dependency: react@18.3.1\nnpm error Fix the upstream dependency conflict, or retry with --force or --legacy-peer-deps.\n##[error]Process completed with exit code 1.\n"
+}

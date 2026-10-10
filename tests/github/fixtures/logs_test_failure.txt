@@ -1,0 +1,54 @@
+Current runner version: '2.330.0'
+Runner name: 'GitHub Actions 42'
+Workflow: CI
+Run id: 4242
+Run number: 118
+Job: test (3.11)
+##[group]Operating System
+Ubuntu
+24.04.3
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20260921.1.0
+##[endgroup]
+##[command]/usr/bin/git config --global user.name github-actions[bot]
+##[command]/usr/bin/git config --global user.email github-actions[bot]@users.noreply.github.com
+Syncing repository: acme/widget
+##[command]/usr/bin/git init /home/runner/work/widget/widget
+Initialized empty Git repository in /home/runner/work/widget/widget/.git/
+##[command]/usr/bin/git fetch --no-tags --depth=1 origin +refs/heads/openmedic/github-adapter*:refs/remotes/origin/openmedic/github-adapter*
+##[command]/usr/bin/git checkout --progress --force -B openmedic/github-adapter refs/remotes/origin/openmedic/github-adapter
+
+##[group]Run python -m pip install -e '.[dev]'
+Looking in indexes: https://pypi.org/simple
+Processing /home/runner/work/widget/widget
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Successfully built widget-0.1.0
+Successfully installed widget-0.1.0
+##[endgroup]
+##[group]Run pytest -q --maxfail=1
+============================= test session starts ==============================
+platform linux -- Python 3.11.13, pytest-8.3.4, pluggy-1.5.0
+rootdir: /home/runner/work/widget/widget
+collected 4 items
+
+tests/test_cli.py F...                                                     [100%]
+
+=================================== FAILURES ===================================
+_________________________________ test_version _________________________________
+
+    def test_version():
+>       assert __version__ == "1.0.0"
+E       assert "0.1.0" == "1.0.0"
+
+tests/test_cli.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_cli.py::test_version - AssertionError: assert "0.1.0" == "1.0.0"
+========================= 1 failed, 3 passed in 0.44s ==========================
+Error: Process completed with exit code 1.
+##[error]Process completed with exit code 1.

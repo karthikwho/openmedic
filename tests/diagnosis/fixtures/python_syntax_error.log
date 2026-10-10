@@ -1,0 +1,7 @@
+Run actions/checkout@v4
+$ python -m compileall src
+  File "/home/runner/work/app/app/src/app.py", line 4
+    def get_config():
+    ^
+SyntaxError: expected ':'
+Error: Process completed with exit code 1.

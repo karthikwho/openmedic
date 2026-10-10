@@ -1,0 +1,20 @@
+Current runner version: '2.320.0'
+##[group]Run npm ci
+  npm ci
+  shell: /usr/bin/bash -e {0}
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: acme-web@2.1.0
+npm error Found: vue@3.4.21
+npm error node_modules/vue
+npm error   vue@"3.4.21" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peer vue@"^3.3.0" from acme-ui-kit@6.0.0
+npm error node_modules/acme-ui-kit
+npm error   acme-ui-kit@"6.0.0" from the root project
+npm error
+npm error Conflicting peer dependency: vue@3.4.21
+npm error Fix the upstream dependency conflict, or retry with --force or --legacy-peer-deps.
+##[error]Process completed with exit code 1.

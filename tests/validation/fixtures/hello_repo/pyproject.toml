@@ -1,0 +1,15 @@
+# Throwaway fixture project used by the validation-layer tests.
+#
+# It is deliberately minimal: no dependencies, no package, no git metadata. Tests copy it
+# into a disposable worktree and run a real check command against the copy, so nothing here
+# is ever imported, installed, or executed in the OpenMedic process itself.
+
+[tool.pytest.ini_options]
+# The check file is named *_check.py so the OpenMedic test run does not collect it, while a
+# validation run inside a disposable copy of this directory still does.
+python_files = ["*_check.py"]
+testpaths = ["."]
+
+[tool.ruff]
+# Present so `CheckPolicy.detect` has a lint signal to discover.
+line-length = 100

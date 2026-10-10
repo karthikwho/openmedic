@@ -1,0 +1,13 @@
+{
+  "case_id": "ambiguous-unknown-signature",
+  "expected_failure_type": "unknown",
+  "expected_rule_id": null,
+  "min_confidence": 0.0,
+  "tags": [
+    "negative",
+    "ambiguous",
+    "p0"
+  ],
+  "note": "The step genuinely failed and exited non-zero, but the output carries no signature this project recognises. Guessing a class here would be fabrication; unknown is the required outcome (FR-004).",
+  "log": "Current runner version: '2.320.0'\n##[group]Run ./scripts/notify.sh --channel releases\n  ./scripts/notify.sh --channel releases\n  shell: /usr/bin/bash -e {0}\n[notify] resolving webhook target from vault path 'ci/notifications'\n[notify] endpoint resolved, schema version unknown to this client\n[notify] retrying (attempt 1 of 5)\n[notify] retrying (attempt 2 of 5)\n[notify] retrying (attempt 3 of 5)\n[notify] endpoint returned an unlabelled envelope; dropping payload\n[notify] giving up after 5 attempts\n##[warning]Step 'notify' did not produce any machine-readable result\n##[error]Process completed with exit code 1.\n"
+}

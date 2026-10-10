@@ -1,0 +1,5 @@
+Run actions/checkout@v4
+Run actions/setup-python@v5
+Run install-dependencies
+$ python -m pytest -q
+##[error]Process completed with exit code 1.

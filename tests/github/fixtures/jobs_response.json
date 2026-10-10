@@ -1,0 +1,50 @@
+{
+  "total_count": 3,
+  "jobs": [
+    {
+      "id": 1001,
+      "run_id": 4242,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-09T12:00:10Z",
+      "completed_at": "2026-10-09T12:01:05Z",
+      "html_url": "https://github.com/acme/widget/runs/1001",
+      "steps": [
+        {"number": 1, "name": "Set up job", "status": "completed", "conclusion": "success"},
+        {"number": 2, "name": "Run actions/checkout@v4", "status": "completed", "conclusion": "success"},
+        {"number": 3, "name": "Build package", "status": "completed", "conclusion": "success"}
+      ]
+    },
+    {
+      "id": 1002,
+      "run_id": 4242,
+      "name": "test (3.11)",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-10-09T12:01:07Z",
+      "completed_at": "2026-10-09T12:04:31Z",
+      "html_url": "https://github.com/acme/widget/runs/1002",
+      "steps": [
+        {"number": 1, "name": "Set up job", "status": "completed", "conclusion": "success"},
+        {"number": 2, "name": "Run actions/checkout@v4", "status": "completed", "conclusion": "success"},
+        {"number": 3, "name": "Install dependencies", "status": "completed", "conclusion": "success"},
+        {"number": 4, "name": "Run pytest", "status": "completed", "conclusion": "failure"}
+      ]
+    },
+    {
+      "id": 1003,
+      "run_id": 4242,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-09T12:04:33Z",
+      "completed_at": "2026-10-09T12:05:02Z",
+      "html_url": "https://github.com/acme/widget/runs/1003",
+      "steps": [
+        {"number": 1, "name": "Set up job", "status": "completed", "conclusion": "success"},
+        {"number": 2, "name": "Run ruff check", "status": "completed", "conclusion": "success"}
+      ]
+    }
+  ]
+}

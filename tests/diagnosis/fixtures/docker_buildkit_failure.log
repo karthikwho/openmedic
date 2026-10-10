@@ -1,0 +1,18 @@
+Current runner version: '2.320.0'
+##[group]Run docker build -t acme/api:$GITHUB_SHA .
+  docker build -t acme/api:$GITHUB_SHA .
+  shell: /usr/bin/bash -e {0}
+#0 building with "default" instance using docker driver
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.28kB done
+#1 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 DONE 1.9s
+#3 [2/6] RUN apt-get update && apt-get install -y --no-install-recommends build-toolkit
+#3 0.512 Get:1 http://deb.debian.org/debian bookworm InRelease [147 kB]
+#3 0.934 E: Unable to locate package build-toolkit
+#3 ERROR: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends build-toolkit" did not complete successfully: exit code: 100
+------
+ > [2/6] RUN apt-get update && apt-get install -y --no-install-recommends build-toolkit:
+1.203 ERROR: failed to solve: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends build-toolkit" did not complete successfully: exit code: 100
+##[error]Process completed with exit code 1.

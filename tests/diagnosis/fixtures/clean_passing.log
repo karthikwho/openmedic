@@ -1,0 +1,16 @@
+Run actions/checkout@v4
+Run actions/setup-python@v5
+Successfully created virtual environment
+Collecting pytest
+  Downloading pytest-8.3.2-py3-none-any.whl (341 kB)
+Successfully installed pytest-8.3.2
+$ python -m pytest tests -q
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.3.2, pluggy-1.5.0
+rootdir: /home/runner/work/app/app
+collected 5 items
+
+tests/test_calc.py .....                                                    [100%]
+
+============================== 5 passed in 0.12s ==============================
+Success: build and tests passed cleanly.

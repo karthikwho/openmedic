@@ -1,0 +1,8 @@
+Run actions/checkout@v4
+Run actions/setup-python@v5
+$ python -m pytest -q
+Traceback (most recent call last):
+  File "/home/runner/work/app/app/src/client.py", line 3, in <module>
+    from requests.adapters import HTTPAdapter2
+ImportError: cannot import name 'HTTPAdapter2' from 'requests.adapters' (/opt/hostedtoolcache/Python/3.12.3/lib/python3.12/site-packages/requests/adapters.py)
+Error: Process completed with exit code 1.
